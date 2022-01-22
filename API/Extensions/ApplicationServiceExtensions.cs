@@ -5,6 +5,8 @@ using Persistance;
 using MediatR;
 using Application.Core;
 using Application.Activities;
+using Application.Interfaces;
+using Infrastructure.Security;
 
 namespace API.Extensions
 {
@@ -20,8 +22,10 @@ namespace API.Extensions
                 {
                     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
                 }));
+            
             services.AddMediatR(typeof(List.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+            services.AddScoped<IUserAccessor,UserAccessor>();
             return services;
         }
     }
