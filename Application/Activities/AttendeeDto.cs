@@ -1,10 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Domain;
-
-namespace Application.Profiles
+﻿namespace Application.Activities
 {
-    public class Profile
+    public class AttendeeDto
     {
         public string Username { get; set; }
         
@@ -13,8 +9,5 @@ namespace Application.Profiles
         public string Bio { get; set; }
         
         public string Image { get; set; }
-
-        public ICollection<Photo> Photos { get; set; }
-        
     }
 }
