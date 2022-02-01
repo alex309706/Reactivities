@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default  observer (function ProfilePhotos({profile}: Props){
-    const {profileStore: {isCurrentUser,uploadPhoto, uploading, loading, setMainPhoto, deletePhoto, deleting}} = useStore();
+    const {profileStore: {isCurrentUser,uploadPhoto, uploading, loading, setMainPhoto, deletePhoto, deleting},activityStore:{activitiesByDate}} = useStore();
     const [addPhotoMode, setAddPhotoMode] = useState(false);
     const [target, setTarget] = useState('');
     
@@ -21,6 +21,11 @@ export default  observer (function ProfilePhotos({profile}: Props){
     function handleSetMainPhoto(photo: Photo, e: SyntheticEvent<HTMLButtonElement>) {
         setTarget(e.currentTarget.name);
         setMainPhoto(photo);
+        activitiesByDate.forEach(a => {
+            if(a.isHost){
+                a.host!.image = photo.url;
+            }
+        })
     }
 
     function handleDeletePhoto(photo: Photo, e: SyntheticEvent<HTMLButtonElement>) {
