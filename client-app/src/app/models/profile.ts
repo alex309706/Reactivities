@@ -5,6 +5,7 @@ export interface Profile {
     displayName : string;
     image? : string;
     bio? : string;
+    photos?: Photo[];
 } 
 
 export class ProfileAsClass {
@@ -17,4 +18,10 @@ export class ProfileAsClass {
         this.displayName = user.displayName;
         this.image = user.image;
     }
+}
+
+export interface Photo {
+    id: string;
+    url: string;
+    isMain: boolean;
 }
