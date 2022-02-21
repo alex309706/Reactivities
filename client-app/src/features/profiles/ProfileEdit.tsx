@@ -8,11 +8,10 @@ interface Props {
     profile: Profile;
 }
 
-export default observer (function ProfileInfo ({profile}:Props){
+export default observer (function ProfileEdit ({profile}:Props){
     const {profileStore} = useStore();
     const {isCurrentUser} = profileStore;
     const [editMode, setEditMode] = useState(false);
-    const [currentName, setCurrentName] = useState(profile.displayName);
     
     return(
         <Tab.Pane>
@@ -48,6 +47,7 @@ export default observer (function ProfileInfo ({profile}:Props){
 
                     <Grid.Column width={16} textAlign='right'>
                         <Button color='green'
+                        onClick={}
                         
                        >
                             Update 

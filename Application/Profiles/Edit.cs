@@ -41,16 +41,18 @@ namespace Application.Profiles
             {
                 var user = await _context.Users.FirstOrDefaultAsync(x=> x.UserName == _userAccessor.GetUsername());
 
-               if (user == null) return null;
+               if (user == null) return Result<Unit>.Failure("There is no such a user");
 
-               user.UserName = request.Profile.DisplayName.ToLower();
+               if (request.Profile.Bio == user.Bio && request.Profile.DisplayName == user.DisplayName) 
+                   return Result<Unit>.Failure("There is no changes");
+               
                user.DisplayName = request.Profile.DisplayName;
                user.Bio = request.Profile.Bio;
 
                _context.Users.Update(user);
-
+               
                var result = await _context.SaveChangesAsync(cancellationToken) > 0;
-
+               
                return result ? Result<Unit>.Success(Unit.Value) : Result<Unit>.Failure("Could not update profile");
             }
         }

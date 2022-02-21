@@ -93,8 +93,14 @@ export default class  ProfileStore {
             runInAction(() => this.deleting = false)
             console.log(error);
         }
-       
-        
+    }
+    
+    updateProfile = (profile: Partial<Profile>) => {
+        if(this.profile)
+        {
+            this.profile.displayName = profile.displayName!;
+            this.profile.bio = profile.bio;
+        }
     }
 
 }
