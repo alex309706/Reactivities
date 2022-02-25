@@ -36,8 +36,6 @@ export default observer (function ProfileEdit ({profile}:Props){
                         <Input
                             type="text"
                             fluid
-                            value = {currentName} 
-                            onChange={e => setCurrentName(e.target.value) }
                         />
                     </Grid.Column>
 
@@ -47,8 +45,6 @@ export default observer (function ProfileEdit ({profile}:Props){
 
                     <Grid.Column width={16} textAlign='right'>
                         <Button color='green'
-                        onClick={}
-                        
                        >
                             Update 
                         </Button>
