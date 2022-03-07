@@ -1,8 +1,7 @@
-﻿import {ChatComment} from "../models/Comment";
 import {HubConnection, HubConnectionBuilder, LogLevel} from "@microsoft/signalr";
 import {makeAutoObservable, runInAction} from "mobx";
 import {store} from "./store";
-import {date} from "yup";
+import {ChatComment} from "../models/comment";
 
 export default class  CommentStore {
     comments: ChatComment[] = [];

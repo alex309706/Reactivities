@@ -1,6 +1,6 @@
-﻿import React, {useState} from "react";
+import React, {useState} from "react";
 import {observer} from "mobx-react-lite";
-import {Button, Form, Grid, Header, Icon, Input, Item, Tab, TextArea} from "semantic-ui-react";
+import {Button, Form, Grid, Icon, Input, Tab, TextArea} from "semantic-ui-react";
 import {Profile} from "../../app/models/profile";
 import {useStore} from "../../app/stores/store";
 
@@ -22,12 +22,13 @@ export default observer (function ProfileEdit ({profile}:Props){
                 <Grid.Column width={12}>
                     <h1>About {profile.displayName}</h1>
                 </Grid.Column>
+                {isCurrentUser &&
                 <Grid.Column width={3} textAlign='right'>
                     <Button
                         basic
                         onClick={ e => setEditMode(!editMode)}
                     >{!editMode ? 'Edit Profile' : 'Cancel'}</Button>
-                </Grid.Column>
+                </Grid.Column>}
             </Grid>
             {editMode &&
             <Form>

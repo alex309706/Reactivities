@@ -5,7 +5,8 @@ import { history } from "../..";
 import {Activity, ActivityFormValues} from "../models/activity";
 import { User, UserFormValues } from "../models/user";
 import { store } from "../stores/store";
-import {Photo, Profile} from "../models/profile";
+import {Profile} from "../models/profile";
+import {Photo} from "../models/photo";
 
 axios.defaults.baseURL = 'http://localhost:5000/api';
 
@@ -98,7 +99,9 @@ const Profiles = {
     },
     setMainPhoto: (id: string) =>  requests.post(`/photos/${id}/setMain`,{}),
     deletePhoto: (id: string) => requests.delete(`photos/${id}`),
-    update: (profile: Partial<Profile>) => requests.put(`/profiles`,profile)
+    update: (profile: Partial<Profile>) => requests.put(`/profiles`,profile),
+    updateFollowing: (username: string) => requests.post(`/follow/${username}`,{}),
+    listFollowings: (username: string, predicate: string) => requests.get<Profile[]>(`/follow/${username}?predicate=${predicate}`)
 }
 
 const agent = {

@@ -1,9 +1,10 @@
 import React, {SyntheticEvent, useState} from "react";
 import {observer} from "mobx-react-lite";
 import {Button, Card, Grid, Header, Image, Tab} from "semantic-ui-react";
-import {Photo, Profile} from "../../app/models/profile";
+import {Profile} from "../../app/models/profile";
 import {useStore} from "../../app/stores/store";
 import PhotoUploadWidget from "../../app/common/imageUpload/PhotoUploadWidget";
+import {Photo} from "../../app/models/photo";
 
 interface Props {
     profile: Profile;
